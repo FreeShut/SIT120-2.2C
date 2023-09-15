@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LONG LIFE CONNECTION</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/vue@3.0.0-rc.5/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <div class="main" id="app">
+        <div class="navbar">
+            <div class="icon">
+                <h3 class="logo">LONG LIFE CONNECTION</h3>
+            </div>
+            <div class="menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="My contacts.html">My contacts</a></li>
+                    <li><a href="Find partners.html">Find partners</a></li>
+                    <li><a href="About.html">About</a></li>
+                </ul>
+                <button class="button">
+                    <a href="signup.html">LogIn/Register</a>
+                </button>
+            </div>
+        </div>
+        <div>
+            <img src="Logo_GC.png" alt="Image" class="imgMain">
+        </div>
+
+        <!-- Adding the Articles section -->
+        <h2>Articles</h2>
+        <div class="article" v-for="article in articles">
+            <h3>{{ article.title }}</h3>
+            <div class="button-group">
+                <button @click="increment(article, 'likes')">Like</button><span>{{ article.likes }}</span>
+                <button @click="increment(article, 'shares')">Share</button><span>{{ article.shares }}</span>
+                <button @click="increment(article, 'dislikes')">Dislike</button><span>{{ article.dislikes }}</span>
+            </div>
+        </div>
+    </div>
+    <script src="java.js"></script>
+</body>
+
+</html>

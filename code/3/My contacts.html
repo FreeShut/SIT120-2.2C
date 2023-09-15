@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LONG LIFE CONNECTION</title>
+    <link rel="stylesheet" href="style2.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://unpkg.com/vue@3.0.0-rc.5/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="icon">
+            <h3 class="logo">LONG LIFE CONNECTION</h3>
+        </div>
+        <div class="menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="My contacts.html">My contacts</a></li>
+                <li><a href="Find partners.html">Find partners</a></li>
+                <li><a href="About.html">About</a></li>
+            </ul>
+            <button class="button">
+            <a href="signup.html">LogIn/Register</a>
+        </button>
+        </div>
+        <!-- ... (other parts of the HTML document) ... -->
+
+        <div id="relationship-graph" style="width: 100%; height: 80vh;"></div>
+
+        <div class="legend">
+            <h3>Relationship Legend:</h3>
+            <ul>
+                <li><span class="color-box" style="background-color: green;"></span> Green: Good Relationship</li>
+                <li><span class="color-box" style="background-color: red;"></span> Red: Strained Relationship</li>
+                <li><span class="color-box" style="background-color: blue;"></span> Blue: Mentor</li>
+                <li><span class="color-box" style="background-color: yellow;"></span> Yellow: Pen Pal</li>
+                <li><span class="color-box" style="background-color: purple;"></span> Purple: Best Friend</li>
+            </ul>
+        </div>
+        <script>
+            // Sample data: nodes represent users and links represent relationships
+            const nodes = [{
+                id: "User1"
+            }, {
+                id: "User2"
+            }, {
+                id: "User3"
+            }, {
+                id: "User4"
+            }, ];
+
+            const links = [{
+                source: "User1",
+                target: "User2",
+                type: "Good Relationship"
+            }, {
+                source: "User2",
+                target: "User3",
+                type: "Mentor"
+            }, {
+                source: "User3",
+                target: "User4",
+                type: "Best Friend"
+            }, ];
+
+            // Create SVG container for the graph
+            const svg = d3.select("#relationship-graph")
+                .append("svg")
+                .attr("width", "100%")
+                .attr("height", "100%");
+
+            // Create force simulation
+            const simulation = d3.forceSimulation(nodes)
+                .force("link", d3.forceLink(links).id(d => d.id))
+                .force("charge", d3.forceManyBody())
+                .force("center", d3.forceCenter(window.innerWidth / 2, window.innerHeight / 2));
+
+            // Add lines for every link in the dataset
+            const link = svg.selectAll(".link")
+                .data(links)
+                .enter()
+                .append("line")
+                .attr("stroke", d => {
+                    switch (d.type) {
+                        case "Good Relationship":
+                            return "green";
+                        case "Mentor":
+                            return "blue";
+                        case "Best Friend":
+                            return "purple";
+                        default:
+                            return "red";
+                    }
+                })
+                .attr("stroke-width", 2);
+
+            // Add circles for every node in the dataset
+            const node = svg.selectAll(".node")
+                .data(nodes)
+                .enter()
+                .append("circle")
+                .attr("r", 10)
+                .attr("fill", "white")
+                .call(d3.drag()
+                    .on("start", dragstart)
+                    .on("drag", dragging)
+                    .on("end", dragend));
+
+            // Add labels for nodes
+            const label = svg.selectAll(".label")
+                .data(nodes)
+                .enter()
+                .append("text")
+                .attr("class", "label")
+                .text(d => d.id)
+                .attr("text-anchor", "middle")
+                .attr("dy", -15);
+
+            simulation.nodes(nodes).on("tick", ticked);
+            simulation.force("link").links(links);
+
+            function ticked() {
+                link.attr("x1", d => d.source.x)
+                    .attr("y1", d => d.source.y)
+                    .attr("x2", d => d.target.x)
+                    .attr("y2", d => d.target.y);
+
+                node.attr("cx", d => d.x)
+                    .attr("cy", d => d.y);
+
+                label.attr("x", d => d.x)
+                    .attr("y", d => d.y);
+            }
+
+            function dragstart(d) {
+                simulation.restart();
+                simulation.alpha(1.0);
+                d.fx = d.x;
+                d.fy = d.y;
+            }
+
+            function dragging(d) {
+                d.fx = d3.event.x;
+                d.fy = d3.event.y;
+            }
+
+            function dragend(d) {
+                d.fx = null;
+                d.fy = null;
+            }
+        </script>
+
+        <script src="123.js"></script>
+
+    </div>
+</body>
+
+</html>
