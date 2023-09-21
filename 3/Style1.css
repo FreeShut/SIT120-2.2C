@@ -1,0 +1,131 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-image: url(./img/1.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+
+/* Sign-up form container styling */
+
+.sign-up-form,
+.signup-container {
+    width: 400px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    /* Semi-transparent white */
+    margin: 100px auto;
+    /* Centering the container */
+    border-radius: 5px;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+
+/* Input fields and group styling */
+
+.input-box,
+.form-group {
+    border-radius: 20px;
+    padding: 10px;
+    margin: 10px 0;
+    width: 100%;
+    border: 1px solid #999;
+    outline: none;
+}
+
+
+/* General button styling */
+
+button {
+    cursor: pointer;
+    color: #fff;
+    width: 100%;
+    padding: 10px;
+    border: 3px solid #42fbf2;
+    border-radius: 20px;
+    font-size: 15px;
+    margin: 10px 0;
+    outline: none;
+}
+
+.signup-button {
+    background-color: #1c8adc;
+}
+
+.google-button {
+    background-color: #21afde;
+}
+
+
+/* Other general styles */
+
+a {
+    text-decoration: none;
+}
+
+hr {
+    margin-top: 20px;
+    width: 80%;
+}
+
+.or {
+    background: #fff;
+    width: 30px;
+    margin: -19px auto 10px;
+}
+
+img {
+    width: 70px;
+    margin-top: -50px;
+}
+
+.popup {
+    width: 400px;
+    background: #fff;
+    border-radius: 6px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.1);
+    text-align: center;
+    padding: 0 30px 30px;
+    color: #333;
+    visibility: hidden;
+    transition: transform 0.4s, top 0.4s;
+}
+
+.open-popup {
+    visibility: visible;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.popup img {
+    width: 100px;
+    margin-top: -50px;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.popup h2 {
+    font-size: 38px;
+    font-weight: 500;
+    margin: 30px 0 10px;
+}
+
+.popup .confirm-button {
+    width: 100%;
+    margin-top: 50px;
+    padding: 10px 0;
+    background: #6fd649;
+    color: #fff;
+    border: 0;
+    outline: none;
+    font-size: 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+}

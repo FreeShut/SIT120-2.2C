@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LONG LIFE CONNECTION</title>
+    <link rel="stylesheet" href="style3.css">
+    <script src="https://unpkg.com/vue@3.0.0-rc.5/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="icon">
+            <h3 class="logo">LONG LIFE CONNECTION</h3>
+        </div>
+        <div class="menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="My contacts.html">My contacts</a></li>
+                <li><a href="Find partners.html">Find partners</a></li>
+                <li><a href="About.html">About</a></li>
+            </ul>
+            <button class="button">
+                <a href="signup.html">LogIn/Register</a>
+            </button>
+        </div>
+    </div>
+
+    <div class="container" id="app">
+        <div class="column">
+            <h2>New Friends</h2>
+            <input type="text" v-model="searchTerm" placeholder="Search for a friend...">
+            <ul>
+                <li v-for="friend in filteredFriends">
+                    {{ friend.name }}
+                    <button @click="sendRequest(friend)">Add</button>
+                </li>
+            </ul>
+        </div>
+
+        <div class="column">
+            <h2>My Friends</h2>
+            <ul>
+                <li v-for="friend in myFriends">
+                    {{ friend.name }}
+                    <button @click="deleteFriend(friend)">Delete</button>
+                    <button @click="chatWithFriend(friend)">Chat</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script src="contacts.js"></script>
+</body>
+
+</html>

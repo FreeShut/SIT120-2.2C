@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LONG LIFE CONNECTION</title>
+    <link rel="stylesheet" href="Style1.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body style="background-image: url('14.jpg'); background-size: cover;">
+
+    <div class="navbar">
+        <div class="icon">
+            <h3 class="logo">LONG LIFE CONNECTION</h3>
+        </div>
+        <div class="menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="My contacts.html">My contacts</a></li>
+                <li><a href="Find partners.html">Find partners</a></li>
+                <li><a href="About.html">About</a></li>
+            </ul>
+            <button class="button">
+                <a href="signup.html">LogIn/Register</a>
+            </button>
+        </div>
+    </div>
+
+    <div class="sign-up-form" id="app">
+        <h1>Sign Up / Log In</h1>
+
+        <form>
+            <input type="email" class="input-box" v-model="email" placeholder="Your Email~@example.com">
+
+            <input type="password" class="input-box" v-model="password" placeholder="Your password">
+
+
+            <p><span><input type="checkbox"></span> I agree to the terms of service</p>
+
+            <button type="button" class="signup-button" onclick="openPopup()">Sign Up</button>
+            <button type="button" onclick="login()">Log In</button>
+
+            <div class="popup" id="popup">
+                <img src="2.png">
+                <h2>Thank you for Signing up!</h2>
+                <p>Your details have been successfully submitted! We'll keep you posted on the latest updates.</p>
+                <button type="button" class="confirm-button" onclick="closePopup()">OK</button>
+            </div>
+
+            <hr>
+            <p class="or">OR</p>
+            <button type="button" class="google-button" onclick="googleLogin()">
+                Sign up with Google
+            </button>
+
+            <p>Do you already have an account? <a href="#">Log in</a></p>
+        </form>
+    </div>
+
+    <script src="signup.js"></script>
+
+</body>
+
+</html>
